@@ -6,6 +6,9 @@ from spotipy.oauth2 import SpotifyClientCredentials
 import json
 import re
 import os
+import time
+import datetime
+import keyboard
 
 f = open('../../static/home/environ.json')
 
@@ -60,80 +63,94 @@ def img_link_format(img_link):
 
     return '/'.join(sep)
 
-name = line_choose('artists.txt')
+while True:
 
-name_path = "../../static/main1/name.json"
+    name = line_choose('artists.txt')
 
-with open(name_path, "w") as file:
-    json.dump(name, file)
+    name_path = "../../static/main1/name.json"
 
-n = name.split()
-print(n)
-print(to_char_ar(name))
+    with open(name_path, "w") as file:
+        json.dump(name, file)
 
-####
+    n = name.split()
+    print(n)
+    print(to_char_ar(name))
 
-link = 'https://en.wikipedia.org/wiki/'
+    ####
 
-i = 0
+    link = 'https://en.wikipedia.org/wiki/'
 
-while i < len(n):
-    link = link + n[i] + '_'
-    i += 1
+    i = 0
 
-print(link)
-r = requests.get(link)
+    while i < len(n):
+        link = link + n[i] + '_'
+        i += 1
 
-soup = bs4.BeautifulSoup(r.content, 'html.parser')
+    print(link)
+    r = requests.get(link)
 
-content = soup.find_all('p', limit=3)
+    soup = bs4.BeautifulSoup(r.content, 'html.parser')
 
-content = str(content)
+    content = soup.find_all('p', limit=3)
 
-content = clean(content)
+    content = str(content)
 
-desc_path = "../../static/main1/desc.json"
+    content = clean(content)
 
-with open(desc_path, "w") as file:
-    json.dump(content, file)
+    desc_path = "../../static/main1/desc.json"
 
-img = soup.find_all('img')
+    with open(desc_path, "w") as file:
+        json.dump(content, file)
 
-img_path = '../../static/main1/img.json'
+    img = soup.find_all('img')
 
-img_link_og = img[3]['src']
+    img_path = '../../static/main1/img.json'
 
-img_link = img_link_format(img_link_og)
+    img_link_og = img[3]['src']
 
-with open(img_path, "w") as file:
-    json.dump(img_link, file)
+    img_link = img_link_format(img_link_og)
 
-print(img_link_og)
-print(img_link)
+    with open(img_path, "w") as file:
+        json.dump(img_link, file)
 
-####
+    print(img_link_og)
+    print(img_link)
 
-spotipy = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials())
+    ####
+    
+    spotipy = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials())
 
-results = spotipy.search(q='artist: ' + name, type='artist')
-items = results['artists']['items']
-if len(items) > 0:
-    artist = items[0]
-    artist_id = artist['id']
+    results = spotipy.search(q='artist: ' + name, type='artist')
+    items = results['artists']['items']
+    if len(items) > 0:
+        artist = items[0]
+        artist_id = artist['id']
 
-raw_tracks = spotipy.artist_top_tracks(artist_id, country='US')
-top_ids = [None] * 3
+    raw_tracks = spotipy.artist_top_tracks(artist_id, country='US')
+    top_ids = [None] * 3
 
-for i in range(3):
-    top_ids[i] = raw_tracks["tracks"][i]["id"]
+    for i in range(3):
+        top_ids[i] = raw_tracks["tracks"][i]["id"]
 
-ids = {
-    "id1": ""+top_ids[0],
-    "id2": ""+top_ids[1],
-    "id3": ""+top_ids[2]
-}
+    ids = {
+        "id1": ""+top_ids[0],
+        "id2": ""+top_ids[1],
+        "id3": ""+top_ids[2]
+    }
 
-song_path = "../../static/main2/ids.json"
+    song_path = "../../static/main2/ids.json"
 
-with open(song_path, "w") as file:
-    json.dump(ids, file)
+    with open(song_path, "w") as file:
+        json.dump(ids, file)
+
+    restart_time = datetime.time(16, 0)
+
+    while True:
+        current_time = datetime.datetime.now().time()
+
+        if current_time >= desired_restart_time:
+            console.log('New Artist')
+            break
+        else if keyboard.is_pressed('e'):
+            console.log('Force Quit')
+            break
