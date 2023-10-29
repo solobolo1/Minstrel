@@ -145,12 +145,13 @@ while True:
 
     restart_time = datetime.time(16, 0)
 
-    while True:
+    looper = True
+    while looper:
         current_time = datetime.datetime.now().time()
 
         if current_time >= desired_restart_time:
             console.log('New Artist')
-            break
+            looper = False
         else if keyboard.is_pressed('e'):
             console.log('Force Quit')
-            break
+            looper = False
