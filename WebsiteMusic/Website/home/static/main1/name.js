@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             var p = document.getElementById('title')
 
-            p.innerHTML = `<h1 class="format" id="title"><strong>${jsonData}</strong></h1>`;
+            p.innerHTML = `<h1 class="format" ><strong>${jsonData}</strong></h1>`;
             console.log('name done');
         }
     };
