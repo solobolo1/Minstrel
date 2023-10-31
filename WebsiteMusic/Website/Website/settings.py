@@ -12,7 +12,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import whitenoise
+<<<<<<< HEAD
 import os
+=======
+
+>>>>>>> 8d614c1deca8c8985d6efe1c48567e1d12653e90
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
