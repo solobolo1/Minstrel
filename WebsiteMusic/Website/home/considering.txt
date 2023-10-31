@@ -1,13 +1,11 @@
 asd
 asd
 asd
-<<<<<<< HEAD
 km
 Lewis
 abc
 BAD DAY
 ddddd
-=======
 hello world
 hello world ssss
 hello world
@@ -24,4 +22,3 @@ kumer sanu
 kumer sanu songs
 Kumer sanu
 Gilbert O'Sullivan
->>>>>>> 45b29314040f35c75d3a72f650bf72b375f1373e
