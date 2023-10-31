@@ -1,22 +1,25 @@
 {% load static %}
 
 <DOCTYPE html>
-<html lang = "en">
+    <html lang="en">
+
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Minstrel</title>
         <script src="https://kit.fontawesome.com/d321874d45.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="{% static 'bg/noteStyle.css' %}">
         <link rel="icon" type="image/x-icon" href="../static/bg/minstrel_in_site.png">
         <style>
             body {
                 background-color: #FFF6E0;
                 font-family: 'Varela Round', sans-serif;
-                <div class="music-notes-container"></div>
-                <script src="bg/noteFall.js"></script>
+                overflow: auto;
+                height: auto;
+                /* <div class="music-notes-container"></div><script src="bg/noteFall.js"></script> */
             }
 
             .framed {
@@ -31,36 +34,24 @@
             }
 
             #mugshot {
-                position: absolute;
-                top: 25%;
-                left: 17.5%;
                 color: #61677A;
                 width: 400;
                 height: auto;
-
             }
 
+
+
             #title {
-                top: 15%;
-                left: 20%;
                 font-size: 1.5em;
                 display: block;
                 text-align: center;
                 background: #FFD982;
                 border-radius: 25px;
                 padding: 20px;
-            }
-
-            #container {
-                position: relative;
-                top: 45%;
+                width: 400px;
             }
 
             #desc {
-                position: absolute;
-                top: 40%;
-                left: 50%;
-                transform: translateY(-50%);
                 font-size: 1em;
                 background: #FFD982;
                 border-radius: 25px;
@@ -68,42 +59,59 @@
             }
 
             #textbox {
-                position: absolute;
-                top: 5%;
-                left: 80%;
+                /* position: absolute; */
+                /* top: 5%; */
+                /* left: 80%; */
+                margin-top: 15px;
+                margin-right: 15px;
                 font-size: 1.25em;
                 background: #FFD982;
                 border-radius: 25px;
                 padding: 20px;
                 border: none;
+                display: block;
+                margin-left: auto;
             }
 
-            input, select, textarea {
+            input,
+            select,
+            textarea {
                 color: #272829;
+                position: relative;
+                z-index: 10;
             }
 
             .arrow1 {
                 position: absolute;
-                top: 430px;
-                left: 95%;
+                /* top: 430px; */
+                /* left: 95%; */
+                top: 50vh;
+                right: 35px;
             }
 
             .arrow2 {
                 position: absolute;
-                top: 430px;
-                left: 2.5%;
+                /* top: 430px; */
+                /* left: 2.5%; */
+                top: 50vh;
+                left: 35px;
             }
 
             .submit {
-                position: absolute;
-                top: 15%;
-                left: 87.5%;
+                /* position: absolute; */
+                /* top: 15%; */
+                /* left: 87.5%; */
+                margin-left: auto;
+                display: block;
+                margin-right: 140px;
+                margin-top: 15px;
+                position: relative;
+                z-index: 10;
             }
 
             .format {
                 color: #272829;
-                position: absolute;
-                width: 450px;
+                /* width: 450px; */
 
             }
 
@@ -116,8 +124,121 @@
             }
 
 
+            /* ..................update code .... */
+            @media (max-width: 768px) {
+                .fa-4x {
+                    font-size: 25px;
+                }
+            }
+
+            .content_wrapper {
+                display: flex;
+                /* border: solid red; */
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                justify-content: center;
+                align-items: center;
+                top: 0;
+
+            }
+
+            .content_wrapper #desc {
+                width: 450px;
+            }
+
+            @media (max-width: 1100px) {
+                .content_wrapper #mugshot {
+                    width: 100%;
+                    max-width: 350px;
+                }
+
+                .content_wrapper #title {
+                    width: 100%;
+                    max-width: 350px;
+                    padding: 10px;
+                }
+
+                .fa-4x {
+                    font-size: 35px;
+                }
+
+                .content_wrapper #desc {
+                    width: 350px;
+                }
+
+            }
+
+            @media (max-width: 992px) {
+                .content_wrapper {
+                    flex-wrap: wrap;
+                    flex-direction: column;
+                    /* margin-top: 100px; */
+                }
+
+                #textbox {
+                    width: 200px;
+                }
+
+                .content_wrapper .content_box {
+                    width: 100%;
+                }
+                .content_wrapper #title {
+                    padding-top: 5px;
+                    padding-bottom: 5px;
+                    margin-bottom: 5px!important;
+                }
+
+                .content_wrapper .content_box_1 {
+                    text-align: center;
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    margin-bottom: 25px;
+                }
+
+                .content_wrapper .content_box {
+                    padding-left: 15px;
+                    padding-right: 15px;
+                }
+
+                .content_wrapper .content_box_2 #desc {
+                    width: 100%;
+                    font-size: .8rem;
+                    overflow: auto;
+                    max-height: 300px;
+                }
+
+                #textbox {
+                    padding-top: 5px;
+                    padding-bottom: 5px;
+                    margin-right: 80px;
+                }
+
+                .submit {
+                    margin-right: 15px;
+                    margin-top: -40px;
+                }
+                .form_content{
+                    z-index: 10;
+                    position: relative;
+                }
+
+            }
+
+            @media (max-width: 600px){
+                .arrow1{
+                    right: 25px;
+                    top: 54%;
+                }
+                .arrow2{
+                    left: 25px;
+                    top: 54%;
+                }
+            }
         </style>
     </head>
+
     <body>
         <div class="music-notes-container"></div>
 
@@ -135,15 +256,30 @@
         <img class="logo" src="../static/bg/minstrel_in_site.png">
 >>>>>>> 8d614c1deca8c8985d6efe1c48567e1d12653e90
 
-        <div class="center">
-            <div id="mugshot"></div>
+
+        <div class="form_content">
+            <form action="{% url 'save_text' %}" method="POST">
+                {% csrf_token %}
+                <input type="text" required placeholder="Add to our list of artists here!" id="textbox" name="textInput"
+                    size="25">
+
+                <button type="submit" class="submit" onSubmit="WriteToFile(this)">
+                    <i class="fa-solid fa-envelope fa-4x" aria-hidden="true"></i>
+                </button>
+            </form>
         </div>
 
-        <div id="title"></div>
-
-        <div id="container">
-            <div id="desc"></div>
+        <div class="content_wrapper">
+            <div class="center content_box content_box_1 me-lg-3 pe-lg-3 me-xxl-5 pe-xxl-5">
+                <div id="title" class="mb-3"></div>
+                <div id="mugshot"></div>
+            </div>
+            <div id="" class="content_box content_box_2">
+                <div id="desc"></div>
+            </div>
         </div>
+
+
         <a href="../main2" role="button">
             <i class="fa-solid fa-arrow-right fa-4x fa-beat arrow1" style="color: #61677a;"></i>
         </a>
@@ -151,23 +287,19 @@
             <i class="fa-solid fa-arrow-left fa-4x fa-beat arrow2" style="color: #61677a;"></i>
         </a>
 
-        <form action="{% url 'save_text' %}" method="POST">
-            {% csrf_token %}
-            <input type="text" placeholder="Add to our list of artists here!" id="textbox" name="textInput" size="25">
-
-            <button type="submit" class="submit" onSubmit="WriteToFile(this)">
-                <i class="fa-solid fa-envelope fa-4x" aria-hidden="true"></i>
-            </button>
-        </form>
+       
     </body>
 
-     <script>
-            $('.fa-envelope').hover(function() {
-                $(this).addClass('fa-beat');
-            }, function() {
-                $(this).removeClass('fa-beat');
-            });
-     </script>
+    <script>
+        $('.fa-envelope').hover(function () {
+            $(this).addClass('fa-beat');
+        }, function () {
+            $(this).removeClass('fa-beat');
+        });
+    </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
-</html>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
+        </script>
+
+    </html>
