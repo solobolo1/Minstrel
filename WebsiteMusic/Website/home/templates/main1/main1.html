@@ -1,261 +1,284 @@
 {% load static %}
 
-<DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Minstrel</title>
-        <script src="https://kit.fontawesome.com/d321874d45.js" crossorigin="anonymous"></script>
-        <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="{% static 'bg/noteStyle.css' %}">
-        <link rel="icon" type="image/x-icon" href="../static/bg/minstrel_in_site.png">
-        <style>
-            body {
-                background-color: #FFF6E0;
-                font-family: 'Varela Round', sans-serif;
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Minstrel</title>
+    <script src="https://kit.fontawesome.com/d321874d45.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'bg/noteStyle.css' %}">
+    <link rel="icon" type="image/x-icon" href="../static/bg/minstrel_in_site.png">
+    <style>
+        body {
+            background-color: #FFF6E0;
+            font-family: 'Varela Round', sans-serif;
+            overflow: auto;
+            height: auto;
+            /* <div class="music-notes-container"></div><script src="bg/noteFall.js"></script> */
+        }
+        .music-notes-container{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .framed {
+            text-align: center;
+            background: #FFD982;
+            border-radius: 25px;
+            padding: 20px;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        #mugshot {
+            color: #61677A;
+            width: 400;
+            height: auto;
+        }
+
+
+
+        #title {
+            font-size: 1.5em;
+            display: block;
+            text-align: center;
+            background: #FFD982;
+            border-radius: 25px;
+            padding: 20px;
+            width: 400px;
+        }
+
+        #desc {
+            font-size: 1em;
+            background: #FFD982;
+            border-radius: 25px;
+            padding: 20px;
+        }
+
+        #textbox {
+            /* position: absolute; */
+            /* top: 5%; */
+            /* left: 80%; */
+            /* margin-top: 15px; */
+            /* margin-right: 15px; */
+            font-size: 1.25em;
+            background: #FFD982;
+            border-radius: 25px;
+            padding: 20px;
+            border: none;
+            display: block;
+            margin-left: auto;
+        }
+
+        input,
+        select,
+        textarea {
+            color: #272829;
+            position: relative;
+            z-index: 10;
+        }
+
+        .arrow1 {
+            position: absolute;
+            /* top: 430px; */
+            /* left: 95%; */
+            top: 50vh;
+            right: 35px;
+        }
+
+        .arrow2 {
+            position: absolute;
+            /* top: 430px; */
+            /* left: 2.5%; */
+            top: 50vh;
+            left: 35px;
+        }
+
+        .submit {
+            /* position: absolute; */
+            /* top: 15%; */
+            /* left: 87.5%; */
+            margin-left: auto;
+            display: block;
+            margin-right: 124px;
+            margin-top: 8px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .format {
+            color: #272829;
+            /* width: 450px; */
+
+        }
+
+        .logo {
+            /* position: absolute;
+                top: 3%;
+                left: 2%; */
+            height: 75px;
+            width: 75px;
+        }
+
+
+        /* ..................update code .... */
+        @media (max-width: 768px) {
+            .fa-4x {
+                font-size: 25px;
+            }
+        }
+
+        .content_wrapper {
+            display: flex;
+            /* border: solid red; */
+            /* position: absolute; */
+            width: 100%;
+            /* height: 100%; */
+            justify-content: center;
+            align-items: center;
+            /* top: 0; */
+            position: relative;
+
+        }
+
+        .content_wrapper #desc {
+            width: 450px;
+        }
+
+        @media (max-width: 1100px) {
+            .content_wrapper #mugshot {
+                width: 100%;
+                max-width: 350px;
+            }
+
+            .content_wrapper #title {
+                width: 100%;
+                max-width: 350px;
+                padding: 10px;
+            }
+
+           
+
+            .content_wrapper #desc {
+                width: 350px;
+            }
+
+        }
+
+        @media (max-width: 992px) {
+            .content_wrapper {
+                flex-wrap: wrap;
+                flex-direction: column;
+                /* margin-top: 100px; */
+            }
+            .fa-4x {
+                font-size: 35px;
+            }
+            #textbox {
+                width: 315px;
+            }
+
+            .content_wrapper .content_box {
+                width: 100%;
+            }
+
+            .content_wrapper #title {
+                padding-top: 5px;
+                padding-bottom: 5px;
+                margin-bottom: 5px !important;
+            }
+
+            .content_wrapper .content_box_1 {
+                text-align: center;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                margin-bottom: 25px;
+            }
+
+            .content_wrapper .content_box {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .content_wrapper .content_box_2 #desc {
+                width: 100%;
+                font-size: .8rem;
                 overflow: auto;
-                height: auto;
-                /* <div class="music-notes-container"></div><script src="bg/noteFall.js"></script> */
-            }
-
-            .framed {
-                text-align: center;
-                background: #FFD982;
-                border-radius: 25px;
-                padding: 20px;
-            }
-
-            .center {
-                text-align: center;
-            }
-
-            #mugshot {
-                color: #61677A;
-                width: 400;
-                height: auto;
-            }
-
-
-
-            #title {
-                font-size: 1.5em;
-                display: block;
-                text-align: center;
-                background: #FFD982;
-                border-radius: 25px;
-                padding: 20px;
-                width: 400px;
-            }
-
-            #desc {
-                font-size: 1em;
-                background: #FFD982;
-                border-radius: 25px;
-                padding: 20px;
+                max-height: 600px;
             }
 
             #textbox {
-                /* position: absolute; */
-                /* top: 5%; */
-                /* left: 80%; */
-                margin-top: 15px;
-                margin-right: 15px;
-                font-size: 1.25em;
-                background: #FFD982;
-                border-radius: 25px;
-                padding: 20px;
-                border: none;
-                display: block;
-                margin-left: auto;
-            }
-
-            input,
-            select,
-            textarea {
-                color: #272829;
-                position: relative;
-                z-index: 10;
-            }
-
-            .arrow1 {
-                position: absolute;
-                /* top: 430px; */
-                /* left: 95%; */
-                top: 50vh;
-                right: 35px;
-            }
-
-            .arrow2 {
-                position: absolute;
-                /* top: 430px; */
-                /* left: 2.5%; */
-                top: 50vh;
-                left: 35px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                /* margin-right: 80px; */
             }
 
             .submit {
-                /* position: absolute; */
-                /* top: 15%; */
-                /* left: 87.5%; */
-                margin-left: auto;
-                display: block;
-                margin-right: 140px;
-                margin-top: 15px;
-                position: relative;
+                /* margin-right: 15px; */
+                /* margin-top: -40px; */
+                margin-right: 128px;
+            }
+
+            .form_content {
                 z-index: 10;
+                position: relative;
             }
 
-            .format {
-                color: #272829;
-                /* width: 450px; */
+        }
 
+        @media (max-width: 600px) {
+            .arrow1 {
+                right: 10px;
+                top: 56%;
             }
 
-            .logo {
-                position: absolute;
-                top: 3%;
-                left: 2%;
-                height: 75px;
-                width: 75px;
+            .arrow2 {
+                left: 10px;
+                top: 56%;
             }
 
 
-            /* ..................update code .... */
-            @media (max-width: 768px) {
-                .fa-4x {
-                    font-size: 25px;
-                }
+            #textbox {
+                width: 200px;
             }
 
-            .content_wrapper {
-                display: flex;
-                /* border: solid red; */
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                justify-content: center;
-                align-items: center;
-                top: 0;
-
+            .submit {
+                /* margin-right: 15px; */
+                /* margin-top: -40px; */
+                margin-right: 70px;
+            }
+        }
+        @media (max-width: 400px) {
+            .arrow1 {
+                right: 5px;
             }
 
-            .content_wrapper #desc {
-                width: 450px;
+            .arrow2 {
+                left: 5px;
             }
+        }
+    </style>
+</head>
 
-            @media (max-width: 1100px) {
-                .content_wrapper #mugshot {
-                    width: 100%;
-                    max-width: 350px;
-                }
-
-                .content_wrapper #title {
-                    width: 100%;
-                    max-width: 350px;
-                    padding: 10px;
-                }
-
-                .fa-4x {
-                    font-size: 35px;
-                }
-
-                .content_wrapper #desc {
-                    width: 350px;
-                }
-
-            }
-
-            @media (max-width: 992px) {
-                .content_wrapper {
-                    flex-wrap: wrap;
-                    flex-direction: column;
-                    /* margin-top: 100px; */
-                }
-
-                #textbox {
-                    width: 200px;
-                }
-
-                .content_wrapper .content_box {
-                    width: 100%;
-                }
-                .content_wrapper #title {
-                    padding-top: 5px;
-                    padding-bottom: 5px;
-                    margin-bottom: 5px!important;
-                }
-
-                .content_wrapper .content_box_1 {
-                    text-align: center;
-                    display: flex;
-                    align-items: center;
-                    flex-direction: column;
-                    margin-bottom: 25px;
-                }
-
-                .content_wrapper .content_box {
-                    padding-left: 15px;
-                    padding-right: 15px;
-                }
-
-                .content_wrapper .content_box_2 #desc {
-                    width: 100%;
-                    font-size: .8rem;
-                    overflow: auto;
-                    max-height: 300px;
-                }
-
-                #textbox {
-                    padding-top: 5px;
-                    padding-bottom: 5px;
-                    margin-right: 80px;
-                }
-
-                .submit {
-                    margin-right: 15px;
-                    margin-top: -40px;
-                }
-                .form_content{
-                    z-index: 10;
-                    position: relative;
-                }
-
-            }
-
-            @media (max-width: 600px){
-                .arrow1{
-                    right: 25px;
-                    top: 54%;
-                }
-                .arrow2{
-                    left: 25px;
-                    top: 54%;
-                }
-            }
-        </style>
-    </head>
-
-    <body>
-        <div class="music-notes-container"></div>
-
-        <script src="{% static 'bg/noteFall.js' %}"></script>
-
-        <script src="{% static 'main1/desc.js' %}"></script>
-
-        <script src="{% static 'main1/name.js' %}"></script>
-
-        <script src="{% static 'main1/img.js' %}"></script>
+<body>
+    <div class="music-notes-container"></div>
 
 
-        <img class="logo" src="/static/minstrel_in_site.png">
 
-        <img class="logo" src="../static/bg/minstrel_in_site.png">
+    <header class="d-flex justify-content-between p-3">
 
-
+        <a href="//www.instagram.com/johans372/" class="me-3">
+            <img class="logo" src="../static/bg/minstrel_in_site.png">
+        </a>
         <div class="form_content">
             <form action="{% url 'save_text' %}" method="POST">
                 {% csrf_token %}
@@ -267,28 +290,43 @@
                 </button>
             </form>
         </div>
+    </header>
 
-        <div class="content_wrapper">
-            <div class="center content_box content_box_1 me-lg-3 pe-lg-3 me-xxl-5 pe-xxl-5">
-                <div id="title" class="mb-3"></div>
-                <div id="mugshot"></div>
-            </div>
-            <div id="" class="content_box content_box_2">
-                <div id="desc"></div>
-            </div>
+    <div class="content_wrapper mt-4 mt-xl-0">
+        <div class="center content_box content_box_1 me-lg-3 pe-lg-3 me-xxl-5 pe-xxl-5">
+            <div id="title" class="mb-3"></div>
+            <div id="mugshot"></div>
         </div>
+        <div id="" class="content_box content_box_2">
+            <div id="desc"></div>
+        </div>
+    </div>
 
 
-        <a href="../main2" role="button">
-            <i class="fa-solid fa-arrow-right fa-4x fa-beat arrow1" style="color: #61677a;"></i>
-        </a>
-        <a href=".." role="button">
-            <i class="fa-solid fa-arrow-left fa-4x fa-beat arrow2" style="color: #61677a;"></i>
-        </a>
+    <a href="../main2" role="button">
+        <i class="fa-solid fa-arrow-right fa-4x fa-beat arrow1" style="color: #61677a;"></i>
+    </a>
+    <a href=".." role="button">
+        <i class="fa-solid fa-arrow-left fa-4x fa-beat arrow2" style="color: #61677a;"></i>
+    </a>
 
-       
-    </body>
 
+
+
+    <!-- .....................Script................... -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'
+        integrity='sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=='
+        crossorigin='anonymous'></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
+        </script>
+    <script src="{% static 'bg/noteFall.js' %}"></script>
+
+    <script src="{% static 'main1/desc.js' %}"></script>
+
+    <script src="{% static 'main1/name.js' %}"></script>
+
+    <script src="{% static 'main1/img.js' %}"></script>
     <script>
         $('.fa-envelope').hover(function () {
             $(this).addClass('fa-beat');
@@ -297,8 +335,8 @@
         });
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
-        </script>
 
-    </html>
+
+</body>
+
+</html>

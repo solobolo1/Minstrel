@@ -1,271 +1,237 @@
 {% load static %}
 
-<DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Minstrel</title>
-        <script src="https://kit.fontawesome.com/d321874d45.js" crossorigin="anonymous"></script>
-        <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/3.6.17/fetch.min.js"
-            integrity="sha512-aFaJgVz8jnsa59gwJ+P7DquNGEdTNXeyrNV5zwvHz8MAfpDX/zNZoCl8x29UJBv+eFwm347bK+B954Ht9xb0uw=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="{% static 'bg/noteStyle.css' %}">
-        <link rel="icon" type="image/x-icon" href="../static/bg/minstrel_in_site.png">
-        <style>
-            body {
-                background-color: #FFF6E0;
-                font-family: 'Varela Round', sans-serif;
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Minstrel</title>
+    <script src="https://kit.fontawesome.com/d321874d45.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/3.6.17/fetch.min.js"
+        integrity="sha512-aFaJgVz8jnsa59gwJ+P7DquNGEdTNXeyrNV5zwvHz8MAfpDX/zNZoCl8x29UJBv+eFwm347bK+B954Ht9xb0uw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'bg/noteStyle.css' %}">
+    <link rel="icon" type="image/x-icon" href="../static/bg/minstrel_in_site.png">
+    <style>
+        body {
+            background-color: #FFF6E0;
+            font-family: 'Varela Round', sans-serif;
+            overflow: auto;
+            height: auto;
+        }
+
+        .music-notes-container {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* [id*=song] {
+            left: 50%;
+            transform: translateX(-50%);
+        } */
+
+        /* #song1 {
+            position: absolute;
+            top: 200px;
+        }
+
+        #song2 {
+            position: absolute;
+            top: 400px;
+        }
+
+        #song3 {
+            position: absolute;
+            top: 600px;
+        } */
+        .song_list {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        .song_wrapper {
+            /* border: solid; */
+            width: 680px;
+        }
+
+        .song_wrapper [id*=song] iframe {
+            width: 100%;
+        }
+
+        [id*=counter] {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: #FFD982;
+            border-radius: 25px;
+            width: 35px;
+            height: 35px;
+        }
+
+        .user_control {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        [id*=heart] {
+            margin-right: 10px;
+        }
+
+        .arrow2 {
+            position: absolute;
+            top: 50vh;
+            left: 50px;
+        }
+
+        .logo {
+            position: absolute;
+            top: 3%;
+            left: 2%;
+            height: 75px;
+            width: 75px;
+        }
+
+        .opac {
+            opacity: 0.8;
+        }
+
+        .cc {
+            animation-duration: 1s;
+            animation-name: colorChange;
+        }
+
+        @keyframes colorChange {
+            from {
+                color: #FF8646;
             }
 
-            #song1 {
-                position: absolute;
-                top: 200px;
-                left: 200px;
+            to {
+                color: #FFCB63;
             }
+        }
 
-            #song2 {
-                position: absolute;
-                top: 400px;
-                left: 200px;
+        @media (max-width: 992px) {
+            .song_wrapper {
+                /* border: solid; */
+                width: 400px;
             }
+        }
 
-            #song3 {
-                position: absolute;
-                top: 600px;
-                left: 200px;
+        @media (max-width: 768px) {
+            .fa-4x {
+                font-size: 25px;
             }
+        }
 
-            #counter {
-                position: absolute;
-                top: 255px;
-                left: 950px;
-                display: block;
-                text-align: center;
-                background: #FFD982;
-                border-radius: 25px;
-                padding: 10px;
 
+        @media (max-width: 600px) {
+            .song_wrapper {
+                /* border: solid; */
+                width: 300px;
             }
-
-            #counter1 {
-                position: absolute;
-                display: block;
-                text-align: center;
-                top: 455px;
-                left: 950px;
-                background: #FFD982;
-                border-radius: 25px;
-                padding: 10px;
-            }
-
-            #counter2 {
-                position: absolute;
-                top: 655px;
-                left: 950px;
-                display: block;
-                text-align: center;
-                background: #FFD982;
-                border-radius: 25px;
-                padding: 10px;
-            }
-
-            #heart {
-                position: absolute;
-                top: 260px;
-                left: 900px;
-                text-align: center;
-            }
-
-            #heart1 {
-                position: absolute;
-                top: 460px;
-                left: 900px;
-                text-align: center;
-            }
-
-            #heart2 {
-                position: absolute;
-                top: 660px;
-                left: 900px;
-                text-align: center;
-            }
-
             .arrow2 {
-                position: absolute;
-                top: 50vh;
-                left: 50px;
+                left: 25px;
             }
+        }
 
-            .logo {
-                position: absolute;
-                top: 3%;
-                left: 2%;
-                height: 75px;
-                width: 75px;
+
+
+        @media (max-width: 400px) {
+            .arrow2 {
+                top: 200px;
+                left: 38px;
             }
+        }
+    </style>
+</head>
 
-            .opac {
-                opacity: 0.8;
-            }
+<body>
+    <div class="music-notes-container"></div>
 
-            .cc {
-                animation-duration: 1s;
-                animation-name: colorChange;
-            }
-
-            @keyframes colorChange {
-                from {
-                    color: #FF8646;
-                }
-
-                to {
-                    color: #FFCB63;
-                }
-            }
-
-            @media (max-width: 768px) {
-                .fa-4x {
-                    font-size: 25px;
-                }
-            }
-
-            @media (max-width: 992px) {
-                [id*=song] iframe {
-                    width: 300px;
-                }
-
-                [id*=heart] {
-                    left: 522px !important;
-                }
-
-                [id*=counter] {
-                    left: 565px !important;
-                }
-            }
-
-            @media (max-width: 600px) {
-                [id*=song] {
-                    left: 80px !important;
-                }
-
-                [id*=heart] {
-                    left: 400px !important;
-                }
-
-                [id*=counter] {
-                    left: 445px !important;
-                }
-                .arrow2{
-                    left: 25px;
-                }
-            }
-
-            @media (max-width: 480px) {
-                [id*=song] {
-                    left: 80px !important;
-                }
-
-                [id*=heart] {
-                    left: 300px !important;
-                }
-                [id*=counter] {
-                    left: 350px !important;
-                    padding: 3px 9px!important;
-                }
-                #heart,
-                #counter{
-                    top: 158px;
-                }
-                #heart1,
-                #counter1{
-                    top: 360px;
-                }
-                #heart2,
-                #counter2{
-                    top: 562px;
-                }
-            }
-
-            @media (max-width: 400px){
-                .arrow2{
-                    top: 159px;
-                }
-                [id*=song] {
-                    left: 0px !important;
-                    width: 100%;
-                    padding-left: 10px;
-                    padding-right: 10px;
-                }
-                [id*=song] iframe{
-                    width: 100%;
-                }
-                [id*=heart] {
-                    left: calc(100% - 80px) !important;
-                }
-                [id*=counter] {
-                    left: calc(100% - 40px) !important;
-                }
-            }
-        </style>
-    </head>
-
-    <body>
-        <div class="music-notes-container"></div>
-
-        <script src="{% static 'bg/noteFall.js' %}"></script>
-
-        <script src="{% static 'main2/iFrames.js' %}"></script>
-
-        <img class="logo" src="../static/bg/minstrel_in_site.png">
-
-        <a href="../main1" role="button">
-            <i class="fa-solid fa-arrow-left fa-4x fa-beat arrow2" style="color: #61677a;"></i>
+    <header class="d-flex justify-content-between p-3">
+        <a href="//www.instagram.com/johans372/" class="me-3">
+            <img class="logo" src="../static/bg/minstrel_in_site.png">
         </a>
+    </header>
 
-        <div id="song1">
+    <a href="../main1" role="button">
+        <i class="fa-solid fa-arrow-left fa-4x fa-beat arrow2" style="color: #61677a;"></i>
+    </a>
+
+    <div class="song_list">
+        <div class="song_wrapper">
+            <div class="user_control">
+                <i onclick="increment(this)" class="fa-solid fa-heart fa-2x" style="color: #FF8646;" id="heart"></i>
+                <strong>
+                    <div id="counter"></div>
+                </strong>
+            </div>
+
+            <div id="song1">
+            </div>
+
         </div>
 
-        <div id="song2">
+
+        <div class="song_wrapper">
+            <div class="user_control">
+                <i onclick="increment1(this)" class="fa-solid fa-heart fa-2x" style="color: #FF8646;" id="heart1"></i>
+                <strong>
+                    <div id="counter1"></div>
+                </strong>
+            </div>
+            <div id="song2">
+            </div>
+
         </div>
 
-        <div id="song3">
+        <div class="song_wrapper">
+            <div class="user_control">
+                <i onclick="increment2(this)" class="fa-solid fa-heart fa-2x" style="color: #FF8646;" id="heart2"></i>
+                <strong>
+                    <div id="counter2"></div>
+                </strong>
+            </div>
+            <div id="song3">
+            </div>
+
         </div>
+    </div>
 
-        <i onclick="increment(this)" class="fa-solid fa-heart fa-2x" style="color: #FF8646;" id="heart"></i>
-        <strong>
-            <div id="counter"></div>
-        </strong>
+    <!-- ..........................Script................... -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'
+        integrity='sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=='
+        crossorigin='anonymous'></script>
+    <script src="{% static 'bg/noteFall.js' %}"></script>
 
-        <i onclick="increment1(this)" class="fa-solid fa-heart fa-2x" style="color: #FF8646;" id="heart1"></i>
-        <strong>
-            <div id="counter1"></div>
-        </strong>
+    <script src="{% static 'main2/iFrames.js' %}"></script>
+    <script src="{% static 'main2/likes.js' %}"></script>
 
-        <i onclick="increment2(this)" class="fa-solid fa-heart fa-2x" style="color: #FF8646;" id="heart2"></i>
-        <strong>
-            <div id="counter2"></div>
-        </strong>
+    <script>
+        $('.fa-heart').hover(function () {
+            $(this).addClass('fa-beat');
+            $(this).addClass('opac');
+        }, function () {
+            $(this).removeClass('fa-beat');
+            $(this).removeClass('opac');
+        });
+    </script>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
+    </script>
 
-        <script src="{% static 'main2/likes.js' %}"></script>
-
-        <script>
-            $('.fa-heart').hover(function () {
-                $(this).addClass('fa-beat');
-                $(this).addClass('opac');
-            }, function () {
-                $(this).removeClass('fa-beat');
-                $(this).removeClass('opac');
-            });
-        </script>
-    </body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
-        </script>
-
-    </html>
+</html>
