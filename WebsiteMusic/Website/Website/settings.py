@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-90dfo*%6byp31m6cb(uj55mwmbyu6hda*w6gxf=)cryl+g#l6n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['3.106.122.87','www.thedailyartist.com','thedailyartist.com', '127.0.0.1']
+ALLOWED_HOSTS = ['3.106.122.87','www.thedailyartist.com','thedailyartist.com']
 
 
 # Application definition
