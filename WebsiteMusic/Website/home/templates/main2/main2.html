@@ -57,6 +57,7 @@
             flex-direction: column;
             width: 100%;
             min-height: 100vh;
+            position: relative;
         }
 
         .song_wrapper {
@@ -94,6 +95,7 @@
             position: absolute;
             top: 50vh;
             left: 50px;
+            z-index: 10;
         }
 
         .logo {
@@ -142,6 +144,7 @@
                 /* border: solid; */
                 width: 300px;
             }
+
             .arrow2 {
                 left: 25px;
             }
@@ -151,9 +154,18 @@
 
         @media (max-width: 400px) {
             .arrow2 {
-                top: 200px;
+                top: 160px;
                 left: 38px;
             }
+        }
+
+        .arrow_mobile {
+            align-self: start;
+            position: relative;
+            left: 3px;
+            top: 31px;
+            position: relative;
+            z-index: 10;
         }
     </style>
 </head>
@@ -167,12 +179,18 @@
         </a>
     </header>
 
-    <a href="../main1" role="button">
+    <a href="../main1" role="button" class="d-none d-sm-block">
         <i class="fa-solid fa-arrow-left fa-4x fa-beat arrow2" style="color: #61677a;"></i>
     </a>
 
     <div class="song_list">
+        
         <div class="song_wrapper">
+
+            <a href="../main1" role="button" class="arrow_mobile d-sm-none">
+                <i class="fa-solid fa-arrow-left fa-4x fa-beat" style="color: #61677a;"></i>
+            </a>
+    
             <div class="user_control">
                 <i onclick="increment(this)" class="fa-solid fa-heart fa-2x" style="color: #FF8646;" id="heart"></i>
                 <strong>
