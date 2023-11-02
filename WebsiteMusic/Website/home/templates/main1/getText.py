@@ -149,9 +149,9 @@ while True:
     while looper:
         current_time = datetime.datetime.now().time()
 
-        if current_time >= desired_restart_time:
+        if current_time == restart_time:
             print('New Artist')
             looper = False
-        else if keyboard.is_pressed('e'):
+        if keyboard.is_pressed('e'):
             print('Force Quit')
             looper = False
