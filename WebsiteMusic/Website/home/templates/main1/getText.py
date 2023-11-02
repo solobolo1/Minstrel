@@ -67,7 +67,7 @@ while True:
 
     name = line_choose('artists.txt')
 
-    name_path = "../../static/main1/name.json"
+    name_path = "../../../static/main1/name.json"
 
     with open(name_path, "w") as file:
         json.dump(name, file)
@@ -97,14 +97,14 @@ while True:
 
     content = clean(content)
 
-    desc_path = "../../static/main1/desc.json"
+    desc_path = "../../../static/main1/desc.json"
 
     with open(desc_path, "w") as file:
         json.dump(content, file)
 
     img = soup.find_all('img')
 
-    img_path = '../../static/main1/img.json'
+    img_path = '../../../static/main1/img.json'
 
     img_link_og = img[3]['src']
 
@@ -138,7 +138,7 @@ while True:
         "id3": ""+top_ids[2]
     }
 
-    song_path = "../../static/main2/ids.json"
+    song_path = "../../../static/main2/ids.json"
 
     with open(song_path, "w") as file:
         json.dump(ids, file)
